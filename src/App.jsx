@@ -1,7 +1,6 @@
 import {
   capabilities,
   experience,
-  metrics,
   navigation,
   profile,
   projects,
@@ -58,19 +57,6 @@ function Hero() {
   );
 }
 
-function Metrics() {
-  return (
-    <section className="metrics" aria-label="成果摘要">
-      {metrics.map((metric) => (
-        <div className="metric" key={metric.label}>
-          <strong>{metric.value}</strong>
-          <span>{metric.label}</span>
-        </div>
-      ))}
-    </section>
-  );
-}
-
 function SectionIntro({ eyebrow, title, children }) {
   return (
     <div className="section-intro">
@@ -84,7 +70,11 @@ function SectionIntro({ eyebrow, title, children }) {
 function Projects() {
   return (
     <section className="section" id="projects" aria-labelledby="projects-title">
-      <SectionIntro eyebrow="Selected Projects" title="代表项目" />
+      <SectionIntro eyebrow="Selected Projects" title="代表项目">
+        <p>
+          每个项目都按业务问题、产品动作、关键设计和成果证据组织，尽量保留可解释的量化口径，而不是只展示结论数字。
+        </p>
+      </SectionIntro>
       <div className="project-list">
         {projects.map((project, index) => (
           <article className="project-card" key={project.title}>
@@ -92,13 +82,37 @@ function Projects() {
             <div className="project-main">
               <p className="project-tag">{project.tag}</p>
               <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <div className="project-story">
+                <h4>业务问题</h4>
+                <p>{project.challenge}</p>
+              </div>
+              <div className="project-story">
+                <h4>产品动作</h4>
+                <ul>
+                  {project.actions.map((action) => (
+                    <li key={action}>{action}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="project-story">
+                <h4>关键设计</h4>
+                <ul>
+                  {project.design.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul className="outcomes" aria-label={`${project.title} 结果`}>
-              {project.outcomes.map((outcome) => (
-                <li key={outcome}>{outcome}</li>
+            <div className="evidence-panel" aria-label={`${project.title} 成果证据`}>
+              <span className="evidence-title">成果证据</span>
+              {project.evidence.map((item) => (
+                <div className="evidence-item" key={`${project.title}-${item.label}`}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                  <p>{item.note}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </article>
         ))}
       </div>
@@ -151,7 +165,6 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Metrics />
         <section className="section capabilities" aria-labelledby="capabilities-title">
           <SectionIntro eyebrow="Capabilities" title="能力关键词" />
           <div className="keyword-list">

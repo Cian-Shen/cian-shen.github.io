@@ -7,9 +7,8 @@
 日常更新主要修改 `src/content.js`：
 
 - `profile`：姓名、定位、邮箱、首页简介
-- `metrics`：成果摘要数字
 - `capabilities`：能力关键词
-- `projects`：代表项目
+- `projects`：代表项目故事线、关键设计和成果证据
 - `experience`：经历时间线
 
 公开网页只保留姓名和邮箱，不展示性别、出生年月等隐私信息。
@@ -18,7 +17,7 @@
 
 面向产品经理的项目说明、维护方法和后续优化路线见：
 
-[docs/pm-guide.md](docs/pm-guide.md)
+[docs/123](docs/123)
 
 ## 本地运行
 
