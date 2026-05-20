@@ -169,7 +169,7 @@ export const capabilities = [
 
 ## 5. 发布与部署手册
 
-项目使用 GitHub Pages 免费部署。
+项目当前使用 GitHub Pages 免费部署。由于 `github.io` 在中国大陆网络下可能无法稳定访问，建议保留 GitHub Pages 作为海外与备用地址，同时新增 EdgeOne Pages 镜像作为中国大陆主访问地址。
 
 ### 日常更新流程
 
@@ -181,7 +181,7 @@ git commit -m "Update site content"
 git push
 ```
 
-推送后，GitHub Actions 会自动执行部署流程。
+推送后，GitHub Actions 会自动执行 GitHub Pages 部署流程。EdgeOne Pages 镜像若完成 GitHub 导入配置，也会跟随同一次 push 自动更新。
 
 ### 部署流程如何工作
 
@@ -198,7 +198,7 @@ git push
 5. 上传构建产物
 6. 发布到 GitHub Pages
 
-产品经理只需要理解一点：只要 `git push` 成功，网站会自动更新。
+产品经理只需要理解一点：只要 `git push` 成功，海外备用站会自动更新；大陆镜像站在 EdgeOne Pages 配好 GitHub 自动构建后也会自动更新。
 
 ### 如何检查是否发布成功
 
@@ -217,6 +217,12 @@ https://github.com/Cian-Shen/cian-shen.github.io
 https://cian-shen.github.io/
 
 GitHub Pages 有缓存，更新后可能需要等待 1-5 分钟。
+
+### 中国大陆访问
+
+大陆访问不建议把 `github.io` 作为唯一地址。推荐新增 EdgeOne Pages 镜像部署，详细步骤见：
+
+`docs/china-access.md`
 
 ## 6. 后续优化手册
 
